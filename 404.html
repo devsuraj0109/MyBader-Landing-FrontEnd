@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | MAIG Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        
+        .error-message {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        
+        .error-description {
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="/">
+                        <img src="assets/logo.svg" alt="MAIG Software Logo">
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Error Content -->
+    <section class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-message">Page Not Found</h1>
+        <p class="error-description">Sorry, the page you are looking for doesn't exist or has been moved.</p>
+        <a href="/" class="btn primary-btn">Back to Home</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2023 MAIG Software Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

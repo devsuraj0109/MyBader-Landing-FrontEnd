@@ -1,0 +1,36 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#E0EAFF"/>
+  
+  <!-- Phone Frame -->
+  <rect x="130" y="30" width="140" height="240" rx="15" fill="white" stroke="#00E5FF" stroke-width="2"/>
+  <rect x="135" y="35" width="130" height="230" rx="12" fill="#F0F5FF"/>
+  <rect x="190" y="35" width="20" height="5" rx="2" fill="#00E5FF"/>
+  <circle cx="200" cy="255" r="10" stroke="#00E5FF" stroke-width="1.5" fill="none"/>
+  
+  <!-- App UI Elements -->
+  <rect x="145" y="50" width="110" height="40" rx="8" fill="white"/>
+  <rect x="155" y="60" width="60" height="8" rx="2" fill="#00E5FF" opacity="0.7"/>
+  <rect x="155" y="72" width="40" height="8" rx="2" fill="#00E5FF" opacity="0.5"/>
+  <circle cx="230" cy="70" r="15" fill="#00E5FF"/>
+  <path d="M224 70L230 76L236 70" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Chart Element -->
+  <rect x="145" y="100" width="110" height="80" rx="8" fill="white"/>
+  <line x1="155" y1="150" x2="245" y2="150" stroke="#E0EAFF" stroke-width="1"/>
+  <line x1="155" y1="130" x2="245" y2="130" stroke="#E0EAFF" stroke-width="1"/>
+  <line x1="155" y1="110" x2="245" y2="110" stroke="#E0EAFF" stroke-width="1"/>
+  
+  <!-- Chart Bars -->
+  <rect x="165" y="130" width="10" height="20" rx="2" fill="#00E5FF" opacity="0.5"/>
+  <rect x="185" y="120" width="10" height="30" rx="2" fill="#00E5FF" opacity="0.7"/>
+  <rect x="205" y="110" width="10" height="40" rx="2" fill="#00E5FF"/>
+  <rect x="225" y="125" width="10" height="25" rx="2" fill="#00E5FF" opacity="0.7"/>
+  
+  <!-- Bottom Navigation -->
+  <rect x="145" y="190" width="110" height="50" rx="8" fill="white"/>
+  <circle cx="170" cy="215" r="10" fill="#00E5FF" opacity="0.5"/>
+  <circle cx="200" cy="215" r="10" fill="#00E5FF"/>
+  <circle cx="230" cy="215" r="10" fill="#00E5FF" opacity="0.5"/>
+  
+  <text x="200" y="290" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="#333333" text-anchor="middle">Fitness Tracking App</text>
+</svg> 
