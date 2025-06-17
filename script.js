@@ -11,42 +11,57 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Header scroll effect
+    // Sticky header shadow
     const header = document.querySelector('header');
     
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 30) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
     });
     
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
+    // Navbar active link on click
+    const anchorLinks = document.querySelectorAll('.nav-links a');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Remove active from all
+            anchorLinks.forEach(l => l.classList.remove('active'));
+            // Add active to clicked
+            this.classList.add('active');
+            // Smooth scroll
             const targetId = this.getAttribute('href');
-            
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                // Close mobile menu if open
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    mobileMenuBtn.classList.remove('active');
-                }
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+            if (targetId.length > 1 && document.querySelector(targetId)) {
+                e.preventDefault();
+                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
             }
         });
     });
+    
+    // Navbar active link on scroll (Intersection Observer)
+    const sections = document.querySelectorAll('section[id]');
+    const navMap = {};
+    anchorLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            navMap[href.replace('#', '')] = link;
+        }
+    });
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove active from all
+                anchorLinks.forEach(l => l.classList.remove('active'));
+                // Add active to the nav link for this section
+                const id = entry.target.getAttribute('id');
+                if (navMap[id]) navMap[id].classList.add('active');
+            }
+        });
+    }, { threshold: 0.5 });
+    sections.forEach(section => sectionObserver.observe(section));
     
     // Portfolio filter
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -80,61 +95,50 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Testimonial slider
-    const testimonialSlider = document.querySelector('.testimonial-slider');
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const dots = document.querySelectorAll('.dot');
+    // Intersection Observer for fade-in animations
+    const revealEls = document.querySelectorAll('.service-card, .process-step, .portfolio-item, .testimonial-card, .stat');
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => {
+        el.classList.add('animate');
+        observer.observe(el);
+    });
     
-    if (testimonialCards.length > 0 && prevBtn && nextBtn) {
-        let currentIndex = 0;
-        
-        // Function to update slider
-        function updateSlider() {
-            const translateValue = -currentIndex * 100 + '%';
-            testimonialSlider.style.transform = 'translateX(' + translateValue + ')';
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-        
-        // Initialize slider
-        testimonialSlider.style.display = 'flex';
-        testimonialSlider.style.transition = 'transform 0.5s ease';
-        testimonialCards.forEach(card => {
-            card.style.flex = '0 0 100%';
+    // Testimonial slider (simple horizontal scroll)
+    const slider = document.querySelector('.testimonial-slider');
+    let isDown = false;
+    let startX, scrollLeft;
+    if (slider) {
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
         });
-        
-        // Event listeners for buttons
-        prevBtn.addEventListener('click', function() {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : testimonialCards.length - 1;
-            updateSlider();
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
         });
-        
-        nextBtn.addEventListener('click', function() {
-            currentIndex = (currentIndex < testimonialCards.length - 1) ? currentIndex + 1 : 0;
-            updateSlider();
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
         });
-        
-        // Event listeners for dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', function() {
-                currentIndex = index;
-                updateSlider();
-            });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
         });
-        
-        // Auto slide
-        setInterval(function() {
-            currentIndex = (currentIndex < testimonialCards.length - 1) ? currentIndex + 1 : 0;
-            updateSlider();
-        }, 5000);
     }
     
-    // Contact form submission
+    // Contact form (demo only)
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
@@ -161,27 +165,4 @@ document.addEventListener('DOMContentLoaded', function() {
             contactForm.reset();
         });
     }
-    
-    // Animate elements on scroll
-    const animateElements = document.querySelectorAll('.service-card, .process-step, .portfolio-item, .testimonial-card, .stat');
-    
-    function checkScroll() {
-        const triggerBottom = window.innerHeight * 0.8;
-        
-        animateElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            
-            if (elementTop < triggerBottom) {
-                element.classList.add('show');
-            }
-        });
-    }
-    
-    // Add initial class for animation
-    animateElements.forEach(element => {
-        element.classList.add('animate');
-    });
-    
-    window.addEventListener('scroll', checkScroll);
-    checkScroll(); // Check on page load
 }); 
