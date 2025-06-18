@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>MAIG Software - Digital Solutions Provider</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -814,5 +814,122 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script>
+        // Full-screen section functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            let currentSection = null;
+            let isFullScreen = false;
+
+            // Function to enter full-screen mode for a section
+            function enterFullScreen(section) {
+                if (isFullScreen) return;
+                
+                currentSection = section;
+                isFullScreen = true;
+                
+                // Hide all other sections
+                sections.forEach(s => {
+                    if (s !== section) {
+                        s.style.display = 'none';
+                    }
+                });
+                
+                // Show only the current section
+                section.style.display = 'block';
+                section.style.position = 'fixed';
+                section.style.top = '0';
+                section.style.left = '0';
+                section.style.width = '100vw';
+                section.style.height = '100vh';
+                section.style.zIndex = '9999';
+                section.style.overflow = 'auto';
+                section.style.background = 'white';
+                
+                // Add close button
+                const closeBtn = document.createElement('button');
+                closeBtn.innerHTML = '×';
+                closeBtn.className = 'fullscreen-close-btn';
+                closeBtn.onclick = exitFullScreen;
+                section.appendChild(closeBtn);
+                
+                // Prevent body scroll
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Function to exit full-screen mode
+            function exitFullScreen() {
+                if (!isFullScreen) return;
+                
+                isFullScreen = false;
+                
+                // Show all sections
+                sections.forEach(s => {
+                    s.style.display = 'block';
+                    s.style.position = '';
+                    s.style.top = '';
+                    s.style.left = '';
+                    s.style.width = '';
+                    s.style.height = '';
+                    s.style.zIndex = '';
+                    s.style.overflow = '';
+                    s.style.background = '';
+                });
+                
+                // Remove close button
+                const closeBtn = document.querySelector('.fullscreen-close-btn');
+                if (closeBtn) {
+                    closeBtn.remove();
+                }
+                
+                // Restore body scroll
+                document.body.style.overflow = '';
+                
+                // Scroll to the section
+                if (currentSection) {
+                    currentSection.scrollIntoView({ behavior: 'smooth' });
+                    currentSection = null;
+                }
+            }
+
+            // Add click event to section headers for full-screen mode
+            sections.forEach(section => {
+                const header = section.querySelector('.section-header h2, .section-header h3');
+                if (header) {
+                    header.style.cursor = 'pointer';
+                    header.addEventListener('click', () => {
+                        enterFullScreen(section);
+                    });
+                }
+            });
+
+            // Keyboard shortcut to exit full-screen (ESC key)
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isFullScreen) {
+                    exitFullScreen();
+                }
+            });
+
+            // Touch/swipe gesture to exit full-screen
+            let touchStartY = 0;
+            let touchEndY = 0;
+
+            document.addEventListener('touchstart', function(e) {
+                touchStartY = e.changedTouches[0].screenY;
+            });
+
+            document.addEventListener('touchend', function(e) {
+                if (!isFullScreen) return;
+                
+                touchEndY = e.changedTouches[0].screenY;
+                const swipeDistance = touchStartY - touchEndY;
+                
+                // Swipe up to exit full-screen
+                if (swipeDistance > 100) {
+                    exitFullScreen();
+                }
+            });
+        });
+    </script>
 </body>
 </html> 
