@@ -2,28 +2,28 @@
 
 /* Variables */
 :root {
-    --primary: #d76d77;
-    --primary-dark: #b35259;
-    --accent: #f2a691;
-    --accent-hover: #e68e73;
-    --bg-main: #fdfcfc;
-    --bg-gradient: linear-gradient(135deg, #fdfcfc 0%, #fef9f8 100%);
-    --glass-bg: rgba(253, 252, 252, 0.9);
-    --shadow: 0 8px 32px 0 rgba(215, 109, 119, 0.1);
+    --primary: #4a5568;
+    --primary-dark: #2d3748;
+    --accent: #e58e8e; /* Light Coral */
+    --accent-hover: #d17a7a; /* Darker Coral */
+    --bg-main: #fdfbfb; /* Subtle pink/white */
+    --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #fef8f6 100%);
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --shadow: 0 8px 32px 0 rgba(229, 142, 142, 0.1); /* Shadow from coral */
     --radius: 18px;
     --transition: all 0.3s cubic-bezier(.4,2,.6,1);
     --font-main: 'Poppins', Arial, sans-serif;
-    --primary-color: #d76d77;
-    --secondary-color: #f2a691;
-    --accent-color: #d76d77;
+    --primary-color: #4a5568; /* Maintained Grey for Text */
+    --secondary-color: #e58e8e; /* Light Coral */
+    --accent-color: #f5a68d; /* Light Peach */
     --text-color: #4a5568;
-    --text-light: #8d7f7f;
-    --bg-light: #fef9f8;
-    --bg-dark: #b35259;
+    --text-light: #718096;
+    --bg-light: #fef8f6; /* Subtle peach/white */
+    --bg-dark: #2d3748;
     --white: #ffffff;
     --black: #000000;
     --border-radius: 8px;
-    --box-shadow: 0 5px 15px rgba(215, 109, 119, 0.1);
+    --box-shadow: 0 5px 15px rgba(229, 142, 142, 0.1);
 }
 
 /* Base Styles */
@@ -132,31 +132,31 @@ ul {
 }
 
 .primary-btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
     color: white;
-    box-shadow: 0 8px 25px rgba(215, 109, 119, 0.2);
+    box-shadow: 0 8px 25px rgba(229, 142, 142, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .primary-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(215, 109, 119, 0.3);
+    box-shadow: 0 12px 35px rgba(229, 142, 142, 0.35);
     color: white;
 }
 
 .secondary-btn {
     background: rgba(255, 255, 255, 0.95);
     color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    box-shadow: 0 4px 15px rgba(215, 109, 119, 0.1);
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(229, 142, 142, 0.1);
 }
 
 .secondary-btn:hover {
-    background: var(--primary-color);
+    background: var(--secondary-color);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(215, 109, 119, 0.2);
-    border-color: var(--primary-color);
+    box-shadow: 0 8px 25px rgba(229, 142, 142, 0.25);
+    border-color: var(--secondary-color);
 }
 
 .btn i {
@@ -285,7 +285,7 @@ nav {
 }
 
 .nav-link:hover {
-    box-shadow: 0 4px 15px rgba(215, 109, 119, 0.2);
+    box-shadow: 0 4px 15px rgba(74, 85, 104, 0.2);
 }
 
 .mobile-menu-btn {
@@ -388,7 +388,7 @@ nav {
 .hero-image img {
     width: 90%;
     max-width: 480px;
-    filter: drop-shadow(0 8px 32px rgba(215, 109, 119, 0.15));
+    filter: drop-shadow(0 8px 32px rgba(74, 85, 104, 0.15));
     animation: float 5s ease-in-out infinite;
 }
 
@@ -1277,7 +1277,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(215, 109, 119, 0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(74,85,104,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
     opacity: 0.5;
     z-index: 0;
 }
@@ -1315,8 +1315,8 @@ nav {
 
 .contact-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 16px 48px rgba(215, 109, 119, 0.15);
-    border-color: rgba(215, 109, 119, 0.2);
+    box-shadow: 0 16px 48px rgba(74, 85, 104, 0.15);
+    border-color: rgba(74, 85, 104, 0.2);
 }
 
 .contact-icon {
@@ -1381,7 +1381,7 @@ nav {
 
 .social-link:hover {
     transform: translateY(-3px) scale(1.1);
-    box-shadow: 0 8px 25px rgba(215, 109, 119, 0.2);
+    box-shadow: 0 8px 25px rgba(74, 85, 104, 0.2);
 }
 
 .contact-form {
