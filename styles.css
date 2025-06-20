@@ -6,8 +6,8 @@
     --primary-dark: #b85a5a;
     --accent: #f9b9a6;
     --accent-hover: #f7a891;
-    --bg-main: #fdfcfb;
-    --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #fff8f6 100%);
+    --bg-main: #f7fafc;
+    --bg-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
     --glass-bg: rgba(255, 255, 255, 0.9);
     --shadow: 0 8px 32px 0 rgba(217, 107, 107, 0.1);
     --radius: 18px;
@@ -18,7 +18,7 @@
     --accent-color: #ffa58c;
     --text-color: #3b3b3b;
     --text-light: #757575;
-    --bg-light: #fff8f6;
+    --bg-light: #f7fafc;
     --bg-dark: #b85a5a;
     --white: #ffffff;
     --black: #000000;
@@ -741,14 +741,9 @@ nav {
 
 .image-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(0, 229, 255, 0.8));
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(217, 107, 107, 0.7), rgba(249, 185, 166, 0.7));
+    border-radius: 16px;
     opacity: 0;
     transition: opacity 0.3s ease;
     cursor: pointer;
@@ -1014,8 +1009,12 @@ nav {
 
 .portfolio-overlay {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(0, 229, 255, 0.9) 100%);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(217, 107, 107, 0.9), transparent);
+    overflow: hidden;
+    width: 100%;
     color: #fff;
     opacity: 0;
     display: flex;
