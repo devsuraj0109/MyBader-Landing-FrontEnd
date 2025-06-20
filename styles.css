@@ -2,28 +2,28 @@
 
 /* Variables */
 :root {
-    --primary: #4a5568;
-    --primary-dark: #2d3748;
-    --accent: #63b3ed;
-    --accent-hover: #4299e1;
-    --bg-main: #f7fafc;
-    --bg-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-    --glass-bg: rgba(255,255,255,0.9);
-    --shadow: 0 8px 32px 0 rgba(74, 85, 104, 0.1);
+    --primary: #d9534f; /* A professional coral red */
+    --primary-dark: #c9302c; /* A darker shade for hover/active states */
+    --accent: #f0ad4e; /* A complementary light orange/peach */
+    --accent-hover: #ec971f; /* A darker shade for hover/active states */
+    --bg-main: #fdfbfb; /* A very light, warm off-white */
+    --bg-gradient: linear-gradient(135deg, #fff5f2 0%, #fdfbfb 100%); /* Light peach gradient */
+    --glass-bg: rgba(255, 245, 242, 0.85); /* Semi-transparent light peach */
+    --shadow: 0 8px 32px 0 rgba(217, 83, 79, 0.1); /* Soft shadow from primary color */
     --radius: 18px;
     --transition: all 0.3s cubic-bezier(.4,2,.6,1);
     --font-main: 'Poppins', Arial, sans-serif;
-    --primary-color: #4a5568;
-    --secondary-color: #63b3ed;
-    --accent-color: #f6ad55;
-    --text-color: #4a5568;
-    --text-light: #718096;
-    --bg-light: #f7fafc;
-    --bg-dark: #2d3748;
+    --primary-color: #d9534f;
+    --secondary-color: #f0ad4e;
+    --accent-color: #5bc0de; /* A contrasting light blue for specific accents */
+    --text-color: #4f4f4f; /* A dark, muted grey for text */
+    --text-light: #828282; /* A lighter grey for secondary text */
+    --bg-light: #fff5f2; /* A very light peach background */
+    --bg-dark: #4f4f4f; /* Dark grey for footer/dark sections */
     --white: #ffffff;
     --black: #000000;
     --border-radius: 8px;
-    --box-shadow: 0 5px 15px rgba(74, 85, 104, 0.1);
+    --box-shadow: 0 5px 15px rgba(217, 83, 79, 0.1);
 }
 
 /* Base Styles */
