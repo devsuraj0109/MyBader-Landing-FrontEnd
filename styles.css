@@ -742,11 +742,14 @@ nav {
 .image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(45deg, rgba(217, 107, 107, 0.7), rgba(249, 185, 166, 0.7));
+    background: linear-gradient(to top, rgba(217, 107, 107, 0.9), transparent);
     border-radius: 16px;
     opacity: 0;
     transition: opacity 0.3s ease;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image-container:hover .image-overlay {
@@ -757,9 +760,11 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
     color: white;
     text-align: center;
+    height: 100%;
 }
 
 .overlay-content i {
