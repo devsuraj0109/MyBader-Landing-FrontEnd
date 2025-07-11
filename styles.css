@@ -657,6 +657,49 @@ nav {
     margin: 0;
 }
 
+.mission-vision {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.mission, .vision {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.mission:hover, .vision:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.mission h4, .vision h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.mission h4 i, .vision h4 i {
+    font-size: 1.2rem;
+}
+
+.mission p, .vision p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
 .about-stats {
     margin-top: 2rem;
 }
