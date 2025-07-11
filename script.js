@@ -138,7 +138,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Contact form (demo only)
+    // Initialize EmailJS
+    (function() {
+        emailjs.init("W6w4ph6cKick5CXwb");
+    })();
+
+    // Contact form with EmailJS
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
@@ -157,12 +162,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Here you would typically send the form data to a server
-            // For demonstration, we'll just show an alert
-            alert('Thank you for your message! We will get back to you soon.');
+            // Show loading state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
             
-            // Reset form
-            contactForm.reset();
+            // Get current date and time
+            const now = new Date();
+            const date = now.toLocaleDateString();
+            const time = now.toLocaleTimeString();
+            
+            // Prepare template parameters
+            const templateParams = {
+                name: name,
+                email: email,
+                subject: subject || 'Contact Form Submission',
+                message: message,
+                date: date,
+                time: time
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('service_df8cnt8', 'template_2llorvr', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Thank you for your message! We will get back to you within 24 hours.');
+                    contactForm.reset();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Sorry, there was an error sending your message. Please try again or contact us directly.');
+                })
+                .finally(function() {
+                    // Reset button state
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                });
         });
     }
 }); 
